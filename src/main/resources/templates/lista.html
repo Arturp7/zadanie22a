@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkty</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<h2>Wyświetlanie Produktów jako lista</h2> <br>
+
+<ul>
+    <li th:each ="products:${products}"
+        th:text="|${products.name}${products.price}|">
+     </li>
+    <br>
+   Suma:
+    <p th:text="${price}">Suma produktów = </p>
+
+
+
+
+
+
+
+
+</ul>
+
+</body>
+</html>

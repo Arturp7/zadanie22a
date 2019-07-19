@@ -19,5 +19,17 @@ public class ProductRepository {
         productsList.add(product);
     }
 
+    public int sum(){
+        List<Product> products = getAll();
+        int price1 = 0;
+        int totalPrice = 0;
+        for (Product product1 : products) {
+            price1 = price1 + product1.getPrice();
+        }
+        totalPrice = price1;
+
+        return totalPrice;
+    }
+
 
 }

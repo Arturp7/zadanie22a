@@ -18,25 +18,39 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/table")
-    public String addproduct(@RequestParam String name, @RequestParam int price, Model model) {
+    @RequestMapping("/dodaj")
+    public String addproduct(@RequestParam String name, @RequestParam int price) {
         Product product = new Product(name, price);
         productRepository.add(product);
-        List<Product> products = productRepository.getAll();
+        return "redirect:/lista";
 
+    }
+    @GetMapping("/tabela")
+    public String showTable(Model model){
+        List<Product> products = productRepository.getAll();
         int price1 = 0;
         int totalPrice = 0;
         for (Product product1 : products) {
             price1 = price1 + product1.getPrice();
         }
         totalPrice = price1;
-        model.addAttribute("products",products);
-        model.addAttribute("price",totalPrice);
-        return "table" ;
-
+        model.addAttribute("products", products);
+        model.addAttribute("price", totalPrice);
+        return "table";
     }
-
-
+    @GetMapping("/lista")
+    public String showList(Model model){
+        List<Product> products = productRepository.getAll();
+        int price1 = 0;
+        int totalPrice = 0;
+        for (Product product1 : products) {
+            price1 = price1 + product1.getPrice();
+        }
+        totalPrice = price1;
+        model.addAttribute("products", products);
+        model.addAttribute("price", totalPrice);
+        return "lista";
+    }
 
 
 
